@@ -5,16 +5,27 @@ let list = document.getElementById('list');
 
 form.addEventListener('submit', (e) => {
  e.preventDefault();
-  createItem(input.value);
- 
+createItem(input.value);
+inputArr(input.value);
 })
 
-// `<li>${x} <button onclick="deleteItem(this)" class="btn">X</button></li>`
+
+
+function inputArr(item){
+ 
+}
+
+
+
+function getData(){
+    
+}
+
 
 function createItem(x){
   let addList = `<div id="addWrap"><div onclick="deleteItem(this)" id="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div></div>`
   list.insertAdjacentHTML('beforeend', addList);
-  input.value = '';
+//   input.value = '';
   input.focus();
 }
 function deleteItem(eleToDelete){
@@ -32,7 +43,6 @@ function lineThrough(line){
         line.style.backgroundColor = '#BDD3DE';
     }
    
-    
-    
+
     
 }

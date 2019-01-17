@@ -7,52 +7,65 @@
 
 */
 
-
+html, body{
+  height:100%;
+}
 body{
     margin:0;
     padding:0;
     color:#fff;
-    background: linear-gradient(90deg,#2B3A42, #3F5866);
+    background-color:rgb(87, 124, 145);
     font-family: 'Quicksand', sans-serif;
     text-align: center;
   }
-  h2{
+  h2, h1{
     text-transform:capitalize;
     margin:0;
   }
 
   .container{
-    width:30%;
-    margin:auto;
+    width:70%;
+    
+    height:100%;
+    margin:0 auto;
+    background-color:#3F5866;
+    border-left: #fff solid 0.2px;
+    border-right: #fff solid 0.2px;
   }
-  #add{
-      background-color:#FF8F00;
-      width:80px;
-      height:30px;
-      border:none;
-      cursor: pointer;
+  
+  .button{
+    background-color:#FF8F00;
+    width:80px;
+    height:30px;
+    border:none;
+    cursor: pointer;
   }
   #input{
-    width:100%;
+    min-width:60%;
+    
   }
   form{
       display:flex;
       justify-content: center;
-      padding-top:50px;
+      width:60%;
+      margin:auto;
   }
   header{
     background-color:#FF8F00;
     width:100%;
-    height:50px;
-    line-height:50px;
+    height:5vh;
+    line-height:5vh;
   }
   .addWrap{
     display:flex;
     justify-content:center;
     align-items: center;
     cursor: pointer;
-    width:100%;
+    min-width: 500px;
+    width:auto;
+    margin:5px auto;
   }
+  
   #addItem{
       width:100%;
       margin:auto;
@@ -60,9 +73,10 @@ body{
       height:auto;
       background-color:#F0F0DF;
       color:#000;
-      line-height:40px;
       margin:1px;
       overflow: auto;
+      padding:10px;
+      box-sizing: border-box;
   }
   
   #list{
@@ -74,12 +88,13 @@ body{
       display:flex;
       justify-content:center;
   }
-  .btn{
+  #btn{
     cursor:pointer;
-    background:none;
-    border:none;
-    margin: 0;
-    text-transform:capitalize;
+    width:130px;
+    height:50px;
+    font-size:18px;
+    font-weight: 500;
+    margin-bottom:50px;
   }
   .trash{
     background-color:#FF8F00;
@@ -97,13 +112,49 @@ body{
     line-height: 40px;
     margin:1px;
   }
+  .copy:hover, .trash:hover, .button:hover{
+    background-color:rgb(177, 102, 4);
+  }
   .copiedText{
     color:#FF8F00;
-    padding-left:10px;
+    padding-top:20px;
     opacity: 0;
+    transition: .2s ease-in-out;
   }
-  @media(max-width: 600px){
+  footer{
+    width:100%;
+    height:30vh;
+    /* margin-top:240px; */
+  }
+  .info{
+    width:40%;
+    height:20vh;
+    border:#F0F0DF solid 1px;
+    border-radius:5px;
+    margin:0 auto 40px auto;
+    background-color:rgba(0, 0, 0, 0.199);
+  }
+  .auth{
+    margin:0;
+    padding:30px 0;
+  }
+  
+  @media(max-width: 500px){
+    form, .addWrap{
+      width:95%;
+      min-width: 0;
+    }
     .container{
-      width:80%;
+      width:100%;
+      min-width: 0;
+      border:none;
+      
+    }
+    header{
+      height:10vh;
+      line-height: 10vh;
+    }
+    footer{
+      margin:10px 0;
     }
   }

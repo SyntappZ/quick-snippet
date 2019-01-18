@@ -19,7 +19,7 @@
     text-align: center;
     letter-spacing: 1px;
   }
-  h3, h2, h1{
+  h4, h3, h2, h1, p{
     text-transform:capitalize;
     margin:0;
   }
@@ -34,13 +34,12 @@
     width:60%;
     background-color:transparent;
     height: 95vh;
-    overflow-y:scroll;
+    overflow-y:auto;
+    overflow-x: hidden;
   }
   .page-wrap{
     display: flex;
     justify-content: space-between;
-    
-    
   }
 
   aside{
@@ -53,7 +52,14 @@
     position: relative;
   }
   #saved-info{
-   
+    width:90%;
+    height:70%;
+    background-color:rgb(192, 192, 192);
+    color:#000;
+    margin:30px auto;
+  }
+  .snip{
+    padding-top:15px;
   }
   form{
     display:flex;
@@ -72,7 +78,7 @@
     border: none;
     padding:5px;
   }
-  #input{
+  #textarea{
     height: 150px;
   }
   .button{

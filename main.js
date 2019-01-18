@@ -1,29 +1,40 @@
 let form = document.getElementById('form');
 let input = document.getElementById('title');
+let textArea = document.getElementById('textarea');
 let list = document.getElementById('list');
 let btn = document.getElementById('btn');
-
-let itemArr = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-localStorage.setItem('items', JSON.stringify(itemArr));
-const data = JSON.parse(localStorage.getItem('items'));
+let wraps = document.getElementsByClassName('addWrap');
 
 
-let textArray = [];
+
+//title storage
+let titleArray = localStorage.getItem('title') ? JSON.parse(localStorage.getItem('title')) : [];
+localStorage.setItem('title', JSON.stringify(titleArray));
+const data = JSON.parse(localStorage.getItem('title'));
+
+//textarea storage
+let textArray = localStorage.getItem('mainText') ? JSON.parse(localStorage.getItem('mainText')) : [];
+localStorage.setItem('mainText', JSON.stringify(textArray));
+const textData = JSON.parse(localStorage.getItem('mainText'));
+
 
 form.addEventListener('submit', (e) => {
  e.preventDefault();
 
-itemArr.push(input.value);
-localStorage.setItem('items', JSON.stringify(itemArr));
+titleArray.push(input.value);
+localStorage.setItem('title', JSON.stringify(titleArray));
 
-// textArray.push(input.value);
-// localStorage.setItem('items', JSON.stringify(textArray));
+textArray.push(textArea.value);
+localStorage.setItem('mainText', JSON.stringify(textArray));
+
 createItem(input.value);
-input.value = '';
+
 document.location.reload();
 })
 
-
+// console.log(localStorage);
+// console.log(textArray);
+// console.log(titleArray)
 
 
 
@@ -35,7 +46,7 @@ data.forEach(item =>{
 
 
 function createItem(x){
-  let addList = `<div class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy(this)" class="copy"><i class="fas fa-copy"></i></div></div>`
+  let addList = `<div onmouseover="getTextFromArray(this)" class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy(this)" class="copy"><i class="fas fa-copy"></i></div></div>`
   list.insertAdjacentHTML('beforeend', addList);
   input.focus();
 }
@@ -43,11 +54,15 @@ function deleteItem(eleToDelete){
     let added = eleToDelete.nextSibling.innerHTML;
     
     for(let i = 0; i < data.length; i++){
+      
         if(data[i] === added){
             data.splice(i , 1);
-            localStorage.setItem('items', JSON.stringify(data));
+            textArray.splice(i, 1);
+            localStorage.setItem('title', JSON.stringify(data));
+            localStorage.setItem('mainText', JSON.stringify(textArray));
+           
         }
-        
+        document.location.reload();
     }
     eleToDelete.parentElement.remove();
    
@@ -55,8 +70,15 @@ function deleteItem(eleToDelete){
      
 }
 
+function getTextFromArray(text){
 
 
+
+}
+
+// let wrapArray = Array.from(wraps);
+
+console.log(wraps);
 
 function quickCopy(el){ 
     let toCopy =  el.previousSibling;

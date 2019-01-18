@@ -1,22 +1,26 @@
 let form = document.getElementById('form');
-let input = document.getElementById('input');
+let input = document.getElementById('title');
 let list = document.getElementById('list');
 let btn = document.getElementById('btn');
 
 let itemArr = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 localStorage.setItem('items', JSON.stringify(itemArr));
 const data = JSON.parse(localStorage.getItem('items'));
-console.log(data);
 
 
+let textArray = [];
 
 form.addEventListener('submit', (e) => {
  e.preventDefault();
 
 itemArr.push(input.value);
 localStorage.setItem('items', JSON.stringify(itemArr));
+
+// textArray.push(input.value);
+// localStorage.setItem('items', JSON.stringify(textArray));
 createItem(input.value);
 input.value = '';
+document.location.reload();
 })
 
 
@@ -24,7 +28,9 @@ input.value = '';
 
 
 
-
+data.forEach(item =>{
+    createItem(item);
+})
 
 
 
@@ -35,22 +41,21 @@ function createItem(x){
 }
 function deleteItem(eleToDelete){
     let added = eleToDelete.nextSibling.innerHTML;
-    eleToDelete.parentElement.remove();
+    
     for(let i = 0; i < data.length; i++){
         if(data[i] === added){
             data.splice(i , 1);
-            localStorage.setItem('items', JSON.stringify(data))
-            itemArr = [];
-            console.log(data);
+            localStorage.setItem('items', JSON.stringify(data));
         }
+        
     }
+    eleToDelete.parentElement.remove();
    
+    
      
 }
 
-data.forEach(item =>{
-    createItem(item);
-})
+
 
 
 function quickCopy(el){ 

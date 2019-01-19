@@ -7,22 +7,26 @@
     <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>shopping app</title>
+    <title>Quick Snippet</title>
     
 <body>
     <header>
-        <h3>Quick Copy</h3>
+        <h3>Quick Snippet<i class="far fa-copy title-i"></i></h3> 
     </header>
     <div class="page-wrap">
         <aside class="left-menu">
-            <p class="snip">create snippet!</p>
+            <p class="left-title">create snippet!</p>
             <div class="line"></div>
             <form id="form">
                 <input class="imp" id="title" placeholder="Title here..." autocomplete="off" type="text">
-                <textarea  placeholder="Text here..." class="imp" id="textarea" ></textarea>
+                <textarea  placeholder="Snippet here..." class="imp" id="textarea" ></textarea>
                 <button class="button" id="add">Add</button>
             </form>
-
+            <h2>you have <span id="snip-count"></span> snippets</h2>
+            <div class="copySign">
+                
+                <i class="far fa-copy"></i>
+            </div>
             <button class="button" id="btn">remove all</button>
             
                 <div class="info">
@@ -41,7 +45,14 @@
           </div>
        </div>
        <aside id="right-aside">
-        <div id="saved-info"></div>
+            <p class="right-title">&darr; snippet &darr;</p>
+        <div id="snippet"></div>
+        <div id="right-line" class="line"></div>
+        <div id="right-info" class="info">
+            To see your snippet hover over the title, to copy it 
+            click the copy button to the right, to delete it click the trash 
+            button to the left, to mark it as done click the title in the middle.
+        </div>
        </aside>
 
     </div><!-------- page wrap ---------->

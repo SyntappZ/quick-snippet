@@ -4,7 +4,8 @@ let textArea = document.getElementById('textarea');
 let list = document.getElementById('list');
 let btn = document.getElementById('btn');
 let wraps = document.getElementsByClassName('addWrap');
-
+let snippet = document.getElementById('snippet');
+let snippetCount = document.getElementById('snip-count');
 
 
 //title storage
@@ -18,6 +19,8 @@ localStorage.setItem('mainText', JSON.stringify(textArray));
 const textData = JSON.parse(localStorage.getItem('mainText'));
 
 
+
+//add snippets to localStorage
 form.addEventListener('submit', (e) => {
  e.preventDefault();
 
@@ -28,28 +31,33 @@ textArray.push(textArea.value);
 localStorage.setItem('mainText', JSON.stringify(textArray));
 
 createItem(input.value);
-
 document.location.reload();
-})
-
-// console.log(localStorage);
-// console.log(textArray);
-// console.log(titleArray)
+});
 
 
 
 
+
+//get elements on load
 data.forEach(item =>{
     createItem(item);
-})
+    
+});
 
 
 
+//create elements
 function createItem(x){
-  let addList = `<div onmouseover="getTextFromArray(this)" class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy(this)" class="copy"><i class="fas fa-copy"></i></div></div>`
-  list.insertAdjacentHTML('beforeend', addList);
-  input.focus();
+    let addList = `<div onmouseover="getTextFromArray(this)" class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy()" class="copy"><i class="fas fa-copy"></i></div></div>`
+    list.insertAdjacentHTML('beforeend', addList);
+    input.focus();
 }
+  
+//snippet counter
+let snippetNumber = wraps.length;
+snippetCount.innerHTML = snippetNumber;
+
+ //delete elements single
 function deleteItem(eleToDelete){
     let added = eleToDelete.nextSibling.innerHTML;
     
@@ -65,23 +73,25 @@ function deleteItem(eleToDelete){
         document.location.reload();
     }
     eleToDelete.parentElement.remove();
-   
-    
-     
 }
 
-function getTextFromArray(text){
 
-
-
+//find snippet and display it
+function getTextFromArray(thisWrap){
+    for(let i = 0; i < data.length; i++){
+        if(thisWrap === wraps[i]){
+        index = i;
+        snippet.innerHTML = textArray[i];
+        }
+    }
 }
 
-// let wrapArray = Array.from(wraps);
 
-console.log(wraps);
 
-function quickCopy(el){ 
-    let toCopy =  el.previousSibling;
+
+//copy snippet
+function quickCopy(){ 
+    let toCopy =  snippet;
     let animCopy = document.querySelector('.copiedText');
     let selection = window.getSelection();
     let range = document.createRange();
@@ -99,6 +109,8 @@ function quickCopy(el){
     }, 700);
   }
 
+
+//line through the title  
 function lineThrough(line){
     if(line.style.textDecoration === 'line-through'){
         line.style.textDecoration = 'none';
@@ -112,10 +124,20 @@ function lineThrough(line){
     
 }
 
+
+//remove all snippets and elements
 btn.addEventListener('click', function(){
-  [].forEach.call(document.querySelectorAll('.addWrap'), function(e){
-      e.parentNode.removeChild(e)
-  })
-    localStorage.clear()
+   let sure = confirm('Are you sure!? all will be deleted!');
+    if(sure){
+        [].forEach.call(document.querySelectorAll('.addWrap'), function(e){
+            e.parentNode.removeChild(e)
+        })
+          localStorage.clear()
+          document.location.reload();
+    }else{
+        null;
+    }
+
+ 
 })
 

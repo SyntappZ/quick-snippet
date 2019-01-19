@@ -46,21 +46,29 @@
     width:20%;
     height:95vh;
     background-color:rgb(7, 18, 26);
-  }
-  .left-menu{
-   
     position: relative;
   }
-  #saved-info{
+  
+  #snippet{
     width:90%;
     height:70%;
     background-color:rgb(192, 192, 192);
-    color:#000;
-    margin:30px auto;
+    color:rgb(22, 22, 22);
+    font-weight: 600;
+    overflow:auto;
+    margin:0 auto;
+    padding:20px;
+    box-sizing: border-box;
+    transition: .3s ease;
   }
-  .snip{
+  .left-title{
     padding-top:15px;
   }
+
+  .right-title{
+    padding:15px 0 17px 0;
+  }
+
   form{
     display:flex;
     justify-content: space-around;
@@ -80,6 +88,18 @@
   }
   #textarea{
     height: 150px;
+  }
+  .title-i{
+    padding-left:5px;
+  }
+
+  .copySign{
+    width:90%;
+    height:270px;
+    margin:auto;
+    line-height: 270px;
+    font-size:100px;
+    font-weight: 100;
   }
   .button{
     background-color:#55746F;
@@ -181,6 +201,11 @@
     margin:auto;
    
   }
+
+  #right-info{
+    bottom:20px;
+  }
+  
   .line{
     width:80%;
     background-color: #fff;
@@ -191,6 +216,9 @@
     left:0;
     right:0;
     bottom:50px;
+  }
+  #right-line{
+    bottom:190px;
   }
   .auth{
     margin:0;

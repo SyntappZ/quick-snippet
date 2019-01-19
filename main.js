@@ -81,10 +81,16 @@ function getTextFromArray(thisWrap){
     for(let i = 0; i < data.length; i++){
         if(thisWrap === wraps[i]){
         index = i;
-        snippet.innerHTML = textArray[i];
+            if(textArray[i].charAt(0) === '<'){ 
+                snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
+            }else{
+                snippet.innerHTML = textArray[i];
+            }
+       
         }
     }
 }
+
 
 
 

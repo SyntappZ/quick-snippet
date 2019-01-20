@@ -31,6 +31,7 @@ textArray.push(textArea.value);
 localStorage.setItem('mainText', JSON.stringify(textArray));
 
 createItem(input.value);
+
 document.location.reload();
 });
 

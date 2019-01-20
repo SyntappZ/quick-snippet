@@ -3,7 +3,7 @@
   margin:0;
   padding:0;
   overflow:hidden;
-}
+  }
   body{
     color:#fff;
     background-color:#1F3442;
@@ -11,10 +11,31 @@
     text-align: center;
     letter-spacing: 1px;
   }
+  .center-container{
+    width:60%;
+    background-color:transparent;
+    height: 95vh;
+    overflow-y:auto;
+    overflow-x: hidden;
+  }
+  .page-wrap{
+    display:flex;
+    
+  }
+  aside{
+    width:400px;
+    height:95vh;
+    background-color:rgb(7, 18, 26);
+    position: relative;
+  }
+
   h4, h3, h2, h1, p{
     text-transform:capitalize;
     margin:0;
   }
+
+  /*----------------- header ---------------*/
+
   header{
     background-color:rgb(20, 41, 53);
     width:100%;
@@ -22,7 +43,7 @@
     text-align:right;
     margin-right:300px;
     position: relative;
-    box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.116);
+    /* box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.116); */
   }
   header h3{
     position: absolute;
@@ -45,54 +66,24 @@
     right:0;
     margin:auto;
   }
-
-  .container{
-    width:60%;
-    background-color:transparent;
-    height: 95vh;
-    overflow-y:auto;
-    overflow-x: hidden;
-  }
-  .page-wrap{
-    display: flex;
-    justify-content: space-between;
+  .title-i{
+    padding-left:5px;
   }
 
-  aside{
-    width:20%;
-    height:95vh;
-    background-color:rgb(7, 18, 26);
-    position: relative;
-  }
-  #left-aside{
+ 
+   /*------------------- left aside ------------------*/
+
+
+  /* #left-aside{
     box-shadow: 10px 0px 10px 1px rgba(0, 0, 0, 0.144);
-  }
-  #right-aside{
-    width:50%;
-    box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.137);
-  }
+  } */
   
-  #snippet{
-    width:90%;
-    height:70%;
-    background-color:rgb(192, 192, 192);
-    color:rgb(22, 22, 22);
-    font-weight: 600;
-    overflow:auto;
-    margin:0 auto;
-    padding:20px;
-    box-sizing: border-box;
-    transition: .3s ease;
-  }
   .left-title{
-    padding-top:15px;
+    padding:15px 0;
   }
+ 
 
-  .right-title{
-    padding:15px 0 17px 0;
-  }
-
-  form{
+  #form{
     display:flex;
     justify-content: space-around;
     flex-direction:column;
@@ -100,8 +91,7 @@
     width:100%;
     height:300px;
     margin:auto;
-    
-}
+  }
   .imp{
     height:20px;
     width:90%;
@@ -112,8 +102,20 @@
   #textarea{
     height: 150px;
   }
-  .title-i{
-    padding-left:5px;
+ 
+
+ 
+  .button{
+    background-color:#55746F;
+    width:90%;
+    height:30px;
+    border:none;
+    cursor: pointer;
+    color:#000;
+  }
+
+  #add{
+    padding:5px;
   }
 
   .copySign{
@@ -124,22 +126,59 @@
     font-size:100px;
     font-weight: 100;
   }
-  .button{
-    background-color:#55746F;
-    width:90%;
-    height:30px;
-    border:none;
-    cursor: pointer;
-    color:#000;
-    
+
+  .left-bottom-wrap{
+    background-color:rgb(7, 18, 26);
+    width:100%;
+    height: 270px;
+    position: absolute;
+    bottom:20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
   }
 
-  #add{
-    padding:5px;
+  #btn{
+    cursor:pointer;
+    width:150px;
+    height:50px;
+    font-size:18px;
+    margin-bottom: 20px;
   }
   
   
+  #left-lnfo{
+    width:80%;
+    height: 80px;
+    border:solid 1px #fff;
+    padding:20px;
+  }
   
+
+  .line{
+    width:80%;
+    background-color: #fff;
+    height: 2px;
+    border-radius: 50%;
+    margin:auto;
+  }
+
+  .auth{
+    margin:0;
+    color:#fff;
+  }
+  
+  /*----------------- center container ----------------*/
+  .trash{
+    background-color:#55746F;
+    width:50px;
+    height:40px;
+    color:#000;
+    line-height: 40px;
+    margin:1px;
+  }
+
   .addWrap{
     display:flex;
     justify-content:center;
@@ -149,51 +188,21 @@
     width:auto;
     margin:5px auto;
   }
-  
-  #addItem{
-      width:100%;
-      margin:auto;
-      min-height:40px;
-      height:auto;
-      background-color:#F0F0DF;
-      color:#000;
-      font-weight: 900;
-      margin:1px;
-      overflow: auto;
-      padding:9px;
-      box-sizing: border-box;
-  }
-  
-  #list{
-      width:100%;
-      height:auto;
-      min-height:50px;
-      flex-direction: column;
-      margin:50px auto;
-      display:flex;
-      justify-content:center;
-  }
-  #btn{
-    cursor:pointer;
-    width:130px;
-    height:50px;
-    font-size:18px;
-    font-weight: 500;
-    position: absolute;
-    margin:auto;
-    left:0;
-    right:0;
-    bottom:250px;
 
-  }
-  .trash{
-    background-color:#55746F;
-    width:50px;
-    height:40px;
+  #addItem{
+    width:100%;
+    margin:auto;
+    min-height:40px;
+    height:auto;
+    background-color:#F0F0DF;
     color:#000;
-    line-height: 40px;
+    font-weight: 900;
     margin:1px;
-  }
+    overflow: auto;
+    padding:9px;
+    box-sizing: border-box;
+}
+
   .copy{
     background-color:#55746F;
     width:50px;
@@ -202,7 +211,17 @@
     line-height: 40px;
     margin:1px;
   }
-  .copy:hover, .trash:hover, .button:hover{
+
+  #list{
+    width:100%;
+    height:auto;
+    min-height:50px;
+    flex-direction: column;
+    margin:50px auto;
+    display:flex;
+    justify-content:center;
+}
+  .copy:hover, .trash:hover, .button:hover, #search-btn:hover{
     background-color:#D8CECE;
   }
   .copiedText{
@@ -212,45 +231,74 @@
     transition: .2s ease-in-out;
   }
   
-  .info{
+ /*------------------- right aside ------------------*/
+
+ #right-aside{
+  width:900px;
+  /* box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.137); */
+}
+.right-title{
+  padding:15px 0 17px 0;
+}
+#snippet{
+  width:90%;
+  height:60%;
+  background-color:rgb(192, 192, 192);
+  color:rgb(22, 22, 22);
+  font-weight: 600;
+  overflow:auto;
+  margin:0 auto;
+  padding:20px;
+  box-sizing: border-box;
+}
+
+.right-bottom-wrap{
+  position: absolute;
+  bottom:20px;
+  width:100%;
+  flex-direction:column;
+  height:300px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#search-wrap{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:20px;
+}
+#search-btn{
+  background-color:#55746F;
+  padding:7px;
+  width:50px;
+  color:#000;
+  cursor: pointer;
+  border:none;
+}
+
+#copy-button{
+  width:150px;
+  height:50px;
+  margin-top:30px;
+  font-size:20px;
+}
+
+
+#search{
+  width:40%;
+}
+
+  #right-info{
     width:80%;
     height:auto;
     border:solid 1px #fff;
-    position: absolute;
-    bottom: 100px;
     padding:20px;
-    left:0;
-    right:0;
-    margin:auto;
-   
-  }
-
-  #right-info{
-    bottom:20px;
   }
   
-  .line{
-    width:80%;
-    background-color: #fff;
-    height: 2px;
-    border-radius: 50%;
-    margin:auto;
-    position: absolute;
-    left:0;
-    right:0;
-    bottom:60px;
-  }
-  #right-line{
-    bottom:170px;
-  }
-  .auth{
-    margin:0;
-    color:#fff;
-    position: absolute;
-    bottom:15px;
-    left:0;
-    right:0;
-  }
+  
+  
   
  
   

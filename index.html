@@ -15,6 +15,9 @@
         <h3>Quick Snippet<i class="far fa-copy title-i"></i></h3> 
     </header>
     <div class="page-wrap">
+
+        <!--------------- left aside ------------------>
+
         <aside id="left-aside">
             <p class="left-title">create snippet!</p>
             <div class="line"></div>
@@ -25,37 +28,47 @@
             </form>
             <h2>you have <span id="snip-count"></span> snippets</h2>
             <div class="copySign">
-                
-                <i class="far fa-copy"></i>
+                <i class="far fa-hand-scissors"></i>
             </div>
-            <button class="button" id="btn">remove all</button>
+            <div class="left-bottom-wrap">
+                <button class="button" id="btn">remove all</button>
             
-                <div class="info">
+                <div id="left-lnfo" class="info">
                     Welcome to quick copy this site uses browser storage
                     so your saves will only be accessible on this browser/computer.
                 </div>
                 <div class="line"></div>
                 <p class="auth">syntappz 2019</p>
-            
+            </div>
         </aside>
+        <!--------------- center container ------------------>
 
-       <div class="container">
+       <div class="center-container">
             <h1 class="copiedText">Copied</h1>
           <div id="list">
             
           </div>
        </div>
+
+       <!--------------- right aside ------------------>
+
        <aside id="right-aside">
             <p class="right-title">&darr; snippet &darr;</p>
-        <div id="snippet">
-                
-        </div>
-        <div id="right-line" class="line"></div>
-        <div id="right-info" class="info">
-            To see your snippet hover over the title, to copy it 
-            click the copy button to the right, to delete it click the trash 
-            button to the left, to mark it as done click the title in the middle.
-        </div>
+            <div id="snippet"></div>
+            <div class="right-bottom-wrap">
+                <form id="search-wrap">
+                    <input class="imp" id="search" placeholder="Search..." autocomplete="off" type="text">
+                    <i id="search-btn" class="fas fa-search"></i>
+                </form>
+                    <button id="copy-button" class="button">copy<i class="far fa-copy title-i"></i></button>
+                    <div id="right-line" class="line"></div>
+                    <div id="right-info" class="info">
+                        To see your snippet hover over the title, to copy it 
+                        click the copy button to the right, to delete it click the trash 
+                        button to the left, to mark it as done click the title in the middle.
+                    </div>
+            </div>
+           
        </aside>
 
     </div>

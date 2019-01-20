@@ -92,13 +92,50 @@ function getTextFromArray(thisWrap){
     }
 }
 
+//search function
+let search = document.getElementById('search');
+let searchBtn = document.getElementById('search-btn');
+
+
+searchBtn.addEventListener('click', ()=>{
+    let searchInput = search.value;
+    if(wraps.length === 0){
+        snippet.innerHTML = 'You have no snippets!';
+    }else{
+        for(let i = 0; i < wraps.length; i++){
+            let wrapInput = wraps[i].firstChild.nextSibling.innerHTML;
+            if(searchInput === wrapInput){
+                if(textArray[i].charAt(0) === '<'){ 
+                    snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
+                }else{
+                    snippet.innerHTML = textArray[i];
+                    console.log(searchInput + ' ' + wrapInput);
+                }
+             }
+        }
+    }
+});
 
 
 
+//copy button
+let copyBtn = document.getElementById('copy-button');
+copyBtn.addEventListener('click', ()=>{
+    if(snippet.innerHTML === '' ||
+       snippet.innerHTML === 'You have no snippets!' ||
+       snippet.innerHTML === 'Title not recognised!' ||
+       snippet.innerHTML === 'no snippet to copy!'){
+       snippet.innerHTML = 'no snippet to copy!';
+    }else{
+        quickCopy();
+    }
+})
+    
 
-//copy snippet
+
+//copy snippet function
 function quickCopy(){ 
-    let toCopy =  snippet;
+    let toCopy = snippet;
     let animCopy = document.querySelector('.copiedText');
     let selection = window.getSelection();
     let range = document.createRange();
@@ -128,7 +165,7 @@ function lineThrough(line){
         line.style.transform = 'scale(.97)';
         line.style.backgroundColor = '#BDD3DE';
     }
-    
+    //need to make this store in storage somehow!
 }
 
 

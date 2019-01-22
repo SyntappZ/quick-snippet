@@ -19,27 +19,36 @@
         <!--------------- left aside ------------------>
 
         <aside id="left-aside">
-            <p class="left-title">create snippet!</p>
-            <div class="line"></div>
-            <form id="form">
-                <input class="imp" id="title" placeholder="Title here..." autocomplete="off" type="text">
-                <textarea  placeholder="Snippet here..." autocomplete="off" class="imp" id="textarea" ></textarea>
-                <button class="button" id="add">Add</button>
-            </form>
-            <h2>you have <span id="snip-count"></span> snippets</h2>
-            <div class="copySign">
-                <i class="far fa-hand-scissors"></i>
-            </div>
-            <div class="left-bottom-wrap">
-                <button class="button" id="btn">remove all</button>
-            
-                <div id="left-lnfo" class="info">
-                    Welcome to quick copy this site uses browser storage
-                    so your saves will only be accessible on this browser/computer.
-                </div>
+           
+                <p class="left-title">create snippet!</p>
                 <div class="line"></div>
-                <p class="auth">syntappz 2019</p>
-            </div>
+                <form id="form">
+                    <input class="imp" id="title" placeholder="Title here..." autocomplete="off" type="text">
+                    <textarea  placeholder="Snippet here..." autocomplete="off" class="imp" id="textarea" ></textarea>
+                    <button class="button" id="add">Add</button>
+                </form>
+                <h2>you have <span id="snip-count"></span> snippets</h2>
+                    <i id="palette" class="fas fa-palette color-pal"></i>
+                <p>change colour</p>
+                <div id="color-choice" class="color-change">
+                    <h3>colour changer</h3>
+                    <div class="color-box-wrap">
+                        <div id="red" class="color-box"></div>
+                        <div id="blue" class="color-box"></div>
+                        <div id="pink" class="color-box"></div>
+                        <div id="green" class="color-box"></div>
+                    </div>
+                </div>
+                <div class="left-bottom-wrap">
+                    <button class="button" id="btn">remove all</button>
+                
+                    <div id="left-lnfo" class="info">
+                        Welcome to quick copy this site uses browser storage
+                        so your saves will only be accessible on this browser/computer.
+                    </div>
+                    <div class="line"></div>
+                    <p class="auth">syntappz 2019</p>
+                </div>
         </aside>
         <!--------------- center container ------------------>
 
@@ -53,21 +62,22 @@
        <!--------------- right aside ------------------>
 
        <aside id="right-aside">
-            <p class="right-title">&darr; snippet &darr;</p>
-            <div id="snippet"></div>
-            <div class="right-bottom-wrap">
-                <form id="search-wrap">
-                    <input class="imp" id="search" placeholder="Search..." autocomplete="off" type="text">
-                    <i id="search-btn" class="fas fa-search"></i>
-                </form>
-                    <button id="copy-button" class="button">copy<i class="far fa-copy title-i"></i></button>
-                    <div id="right-line" class="line"></div>
-                    <div id="right-info" class="info">
-                        To see your snippet hover over the title, to copy it 
-                        click the copy button to the right, to delete it click the trash 
-                        button to the left, to mark it as done click the title in the middle.
+            
+                <p class="right-title">&darr; snippet &darr;</p>
+                <div id="snippet"></div>
+                <div class="right-bottom-wrap">
+                    <div id="search-wrap">
+                        <input class="imp" id="search" placeholder="Search..." autocomplete="off" type="text">
+                        <i id="search-btn" class="fas fa-search"></i>
                     </div>
-            </div>
+                        <button id="copy-button" class="button">copy<i class="far fa-copy title-i"></i></button>
+                        <div id="right-line" class="line"></div>
+                        <div id="right-info" class="info">
+                            To see your snippet hover over the title, to copy it 
+                            click the copy button to the right, to delete it click the trash 
+                            button to the left, to mark it as done click the title in the middle.
+                        </div>
+                </div>
            
        </aside>
 

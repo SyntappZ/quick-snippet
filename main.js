@@ -8,6 +8,7 @@ let snippet = document.getElementById('snippet');
 let snippetCount = document.getElementById('snip-count');
 
 
+
 //title storage
 let titleArray = localStorage.getItem('title') ? JSON.parse(localStorage.getItem('title')) : [];
 localStorage.setItem('title', JSON.stringify(titleArray));
@@ -32,7 +33,7 @@ localStorage.setItem('mainText', JSON.stringify(textArray));
 
 createItem(input.value);
 
-document.location.reload();
+ document.location.reload();
 });
 
 
@@ -42,8 +43,8 @@ document.location.reload();
 //get elements on load
 data.forEach(item =>{
     createItem(item);
-    
 });
+
 
 
 
@@ -97,6 +98,7 @@ let search = document.getElementById('search');
 let searchBtn = document.getElementById('search-btn');
 
 
+
 searchBtn.addEventListener('click', ()=>{
     let searchInput = search.value;
     if(wraps.length === 0){
@@ -111,7 +113,7 @@ searchBtn.addEventListener('click', ()=>{
                     snippet.innerHTML = textArray[i];
                     console.log(searchInput + ' ' + wrapInput);
                 }
-             }
+            }
         }
     }
 });
@@ -153,19 +155,34 @@ function quickCopy(){
     }, 700);
   }
 
-
+let underlineStorage = []
 //line through the title  
 function lineThrough(line){
     if(line.style.textDecoration === 'line-through'){
         line.style.textDecoration = 'none';
         line.style.transform = 'scale(1)';
         line.style.backgroundColor = '#F0F0DF';
+        
     }else{
         line.style.textDecoration = 'line-through';
         line.style.transform = 'scale(.97)';
         line.style.backgroundColor = '#BDD3DE';
     }
     //need to make this store in storage somehow!
+   
+}
+//underline to storage
+function storeUnderline(){
+    for(let i = 0; i < wraps.length; i++){
+        if(wraps[i].style.textDecoration === 'line-through'){
+            console.log(wraps[i])
+        }
+
+    }
+
+
+
+
 }
 
 
@@ -181,7 +198,19 @@ btn.addEventListener('click', function(){
     }else{
         null;
     }
-
  
 })
 
+
+
+
+    let colorPalette = document.getElementById('palette');
+    let colorChoice = document.getElementById('color-choice');
+
+    colorPalette.addEventListener('mouseover', ()=>{
+        colorChoice.style.transform = 'scale(1)';
+        colorChoice.style.opacity = '1';
+    })
+   
+    // colorChoice.style.transform = 'scale(0)';
+    // colorChoice.style.opacity = '0';

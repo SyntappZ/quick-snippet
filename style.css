@@ -1,4 +1,13 @@
+/*--------- colors ----------*/
+:root{
+  --button: #6BB983;
+  --aside:#1B3E3C;
+  --background:#55746F;
+  --header:#0C2925;
+  --text-bg:#Fff;
+}
 
+/*--------- global ----------*/
   html, body{
   margin:0;
   padding:0;
@@ -6,7 +15,7 @@
   }
   body{
     color:#fff;
-    background-color:#1F3442;
+    background-color:var(--background);
     font-family: 'Thasadith', sans-serif;
     text-align: center;
     letter-spacing: 1px;
@@ -25,7 +34,7 @@
   aside{
     width:400px;
     height:95vh;
-    background-color:rgb(7, 18, 26);
+    background-color:var(--aside);
     position: relative;
   }
 
@@ -37,13 +46,13 @@
   /*----------------- header ---------------*/
 
   header{
-    background-color:rgb(20, 41, 53);
+    background-color:var(--header);
     width:100%;
     height:5vh;
     text-align:right;
     margin-right:300px;
     position: relative;
-    /* box-shadow: 0 8px 10px -2px rgba(0, 0, 0, 0.116); */
+    
   }
   header h3{
     position: absolute;
@@ -51,12 +60,12 @@
     bottom:0;
     top:0;
     margin:auto;
-    background-color: rgb(20, 41, 53);
-    left:655px;
+    background-color: var(--header);
+    left:690px;
   }
   .header-line{
     width:80%;
-    background-color:#55746F;
+    background-color:#fff;
     height: 2px;
     border-radius: 50%;
     position: absolute;
@@ -72,11 +81,6 @@
 
  
    /*------------------- left aside ------------------*/
-
-
-  /* #left-aside{
-    box-shadow: 10px 0px 10px 1px rgba(0, 0, 0, 0.144);
-  } */
   
   .left-title{
     padding:15px 0;
@@ -95,7 +99,7 @@
   .imp{
     height:20px;
     width:90%;
-    background:rgb(192, 192, 192);
+    background:var(--text-bg);
     border: none;
     padding:5px;
   }
@@ -106,7 +110,7 @@
 
  
   .button{
-    background-color:#55746F;
+    background-color:var(--button);
     width:90%;
     height:30px;
     border:none;
@@ -117,26 +121,63 @@
   #add{
     padding:5px;
   }
-
-  .copySign{
+  .color-pal{
+    margin:20px;
+    font-size:80px;
+    cursor: pointer;
+  }
+  .color-change{
     width:90%;
-    height:270px;
+    height:200px;
+    position: absolute;
+    padding:10px;
+    border-radius:10px;
+    background-color:rgb(255, 255, 255);
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
     margin:auto;
-    line-height: 270px;
-    font-size:100px;
-    font-weight: 100;
+    color:#000;
+    z-index: 2;
+    outline: #000;
+    transform: scale(0);
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  .color-box-wrap{
+    width:100%;
+    height:90px;
+    display:flex;
+    justify-content: space-around;
+    margin-top:60px;
+  }
+  .color-box{
+    border:solid 1px #000;
+    width:40px;
+    height:40px;
+    cursor: pointer;
+  }
+  #red{
+    background-color:#40121A;
+  }
+  #blue{
+    background-color:#0A3B5C;
+  }
+  #pink{
+    background-color:#361E40;
+  }
+  #green{
+    background-color:#1B3E3C;
   }
 
   .left-bottom-wrap{
-    background-color:rgb(7, 18, 26);
     width:100%;
-    height: 270px;
+    height: auto;
+    background-color:var(--aside);
     position: absolute;
-    bottom:20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
+    bottom:0;
+    
   }
 
   #btn{
@@ -144,15 +185,17 @@
     width:150px;
     height:50px;
     font-size:18px;
-    margin-bottom: 20px;
+    margin:50px;
   }
   
   
   #left-lnfo{
-    width:80%;
-    height: 80px;
+    width:90%;
+    height: auto;
     border:solid 1px #fff;
     padding:20px;
+    margin:20px auto;
+    box-sizing: border-box;
   }
   
 
@@ -165,13 +208,13 @@
   }
 
   .auth{
-    margin:0;
+    margin:20px 0;
     color:#fff;
   }
   
   /*----------------- center container ----------------*/
   .trash{
-    background-color:#55746F;
+    background-color:var(--button);
     width:50px;
     height:40px;
     color:#000;
@@ -194,7 +237,7 @@
     margin:auto;
     min-height:40px;
     height:auto;
-    background-color:#F0F0DF;
+    background-color:var(--text-bg);
     color:#000;
     font-weight: 900;
     margin:1px;
@@ -203,8 +246,9 @@
     box-sizing: border-box;
 }
 
+
   .copy{
-    background-color:#55746F;
+    background-color:var(--button);
     width:50px;
     height:40px;
     color:#000;
@@ -221,12 +265,12 @@
     display:flex;
     justify-content:center;
 }
-  .copy:hover, .trash:hover, .button:hover, #search-btn:hover{
+  .copy:hover, .trash:hover, .button:hover, #search-btn:hover, #addItem:hover{
     background-color:#D8CECE;
   }
   .copiedText{
-    color:#55746F;
-    padding-top:20px;
+    margin:40px 0 20px 0;
+    color:var(--button);
     opacity: 0;
     transition: .2s ease-in-out;
   }
@@ -235,15 +279,15 @@
 
  #right-aside{
   width:900px;
-  /* box-shadow: -10px 0px 10px 1px rgba(0, 0, 0, 0.137); */
+  height: 95vh;
 }
 .right-title{
   padding:15px 0 17px 0;
 }
 #snippet{
   width:90%;
-  height:60%;
-  background-color:rgb(192, 192, 192);
+  height:450px;
+  background-color:var(--text-bg);
   color:rgb(22, 22, 22);
   font-weight: 600;
   overflow:auto;
@@ -253,24 +297,19 @@
 }
 
 .right-bottom-wrap{
-  position: absolute;
-  bottom:20px;
   width:100%;
-  flex-direction:column;
-  height:300px;
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
+  position: absolute;
+  bottom:0;
 }
 #search-wrap{
   width:100%;
   display:flex;
   justify-content: center;
   align-items: center;
-  margin-top:20px;
+  
 }
 #search-btn{
-  background-color:#55746F;
+  background-color:var(--button);
   padding:7px;
   width:50px;
   color:#000;
@@ -281,8 +320,8 @@
 #copy-button{
   width:150px;
   height:50px;
-  margin-top:30px;
   font-size:20px;
+  margin:50px;
 }
 
 
@@ -295,10 +334,38 @@
     height:auto;
     border:solid 1px #fff;
     padding:20px;
+    margin:20px auto;
   }
   
-  
-  
+  @media(max-height: 877px){
+    #copy-button{
+      margin:20px;
+    }
+    #btn{
+      margin:20px;
+    }
+    #left-lnfo{
+      margin:0 0 20px 0;
+    }
+  }
+  @media(max-height: 800px){
+    #copy-button{
+      margin:20px;
+    }
+    #btn{
+      margin:20px;
+    }
+    #left-lnfo{
+      margin:0 0 20px 0;
+    }
+    #snippet{
+      height:400px;
+    }
+    #textarea{
+      height: 100px;
+    }
+
+  }
   
  
   

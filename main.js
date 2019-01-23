@@ -38,7 +38,7 @@ if(colorArray[0] === 'r'){
     themeChanger('#330E14', '#40121A', '#83262F', '#FADDAE');
 }
 if(colorArray[0] === 'b'){
-    themeChanger('#010026', '#0A3B5C', '#185C79', '#5FA49A');
+    themeChanger('#010026', '#0A3B5C', '#185C79', '#9FC6FF');
 }
 if(colorArray[0] === 'p'){
     themeChanger('#29102E', '#361E40', '#4D2A4F', '#B87D95');
@@ -65,7 +65,7 @@ function redTheme(){
     
 }
 function blueTheme(){
-    themeChanger('#010026', '#0A3B5C', '#185C79', '#5FA49A');
+    themeChanger('#010026', '#0A3B5C', '#185C79', '#9FC6FF');
     colorArray[0] = 'b';
     localStorage.setItem('color', JSON.stringify(colorArray));
     

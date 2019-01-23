@@ -7,6 +7,9 @@ let wraps = document.getElementsByClassName('addWrap');
 let snippet = document.getElementById('snippet-text');
 let snippetCount = document.getElementById('snip-count');
 
+//color storage
+let colorArray = localStorage.getItem('color') ? JSON.parse(localStorage.getItem('color')) : [];
+localStorage.setItem('color', JSON.stringify(colorArray));
 
 
 //title storage
@@ -22,8 +25,65 @@ const textData = JSON.parse(localStorage.getItem('mainText'));
 //line storage
 let lineArray = localStorage.getItem('line') ? JSON.parse(localStorage.getItem('line')) : [];
 localStorage.setItem('line', JSON.stringify(lineArray));
-const lineData = JSON.parse(localStorage.getItem('line'));
 
+
+//stored colors
+const headerColor = '--header';
+const asideColor = '--aside';
+const bGroundColor = '--background';
+const buttonColor = '--button';
+let root = document.documentElement.style;
+
+if(colorArray[0] === 'r'){
+    themeChanger('#330E14', '#40121A', '#83262F', '#FADDAE');
+}
+if(colorArray[0] === 'b'){
+    themeChanger('#010026', '#0A3B5C', '#185C79', '#5FA49A');
+}
+if(colorArray[0] === 'p'){
+    themeChanger('#29102E', '#361E40', '#4D2A4F', '#B87D95');
+}
+
+if(colorArray[0] === 'g'){
+    themeChanger('#0C2925', '#1B3E3C', '#55746F', '#6BB983');
+}
+
+
+
+
+//color change functions
+function themeChanger(headCol, asideCol, bgCol, btnCol){
+    root.setProperty(headerColor, headCol);
+    root.setProperty(asideColor, asideCol);
+    root.setProperty(bGroundColor, bgCol);
+    root.setProperty(buttonColor, btnCol);
+}
+function redTheme(){
+    themeChanger('#330E14', '#40121A', '#83262F', '#FADDAE');
+    colorArray[0] = 'r';
+    localStorage.setItem('color', JSON.stringify(colorArray));
+    
+}
+function blueTheme(){
+    themeChanger('#010026', '#0A3B5C', '#185C79', '#5FA49A');
+    colorArray[0] = 'b';
+    localStorage.setItem('color', JSON.stringify(colorArray));
+    
+}
+
+function purpleTheme(){
+    themeChanger('#29102E', '#361E40', '#4D2A4F', '#B87D95');
+    colorArray[0] = 'p';
+    localStorage.setItem('color', JSON.stringify(colorArray));
+    
+}
+
+function greenTheme(){
+    themeChanger('#0C2925', '#1B3E3C', '#55746F', '#6BB983');
+    colorArray[0] = 'g';
+    localStorage.setItem('color', JSON.stringify(colorArray));
+    
+}
 
 
 
@@ -41,8 +101,10 @@ lineArray.push('a')
 localStorage.setItem('line', JSON.stringify(lineArray));
 
 createItem(input.value);
+input.value = '';
+textArea.value = '';
 
- document.location.reload();
+//  document.location.reload();
 });
 
 
@@ -50,7 +112,7 @@ createItem(input.value);
 
 
 //get elements on load
-data.forEach(item =>{
+titleArray.forEach(item =>{
     createItem(item);
 });
 
@@ -79,12 +141,16 @@ function createItem(x){
     let addList = `<div onmouseover="getTextFromArray(this)" class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy()" class="copy"><i class="fas fa-copy"></i></div></div>`
     list.insertAdjacentHTML('beforeend', addList);
     input.focus();
+    snippetCounter()
 }
-  
+
+
 //snippet counter
-let lineCount = document.getElementById('line-count');
-let snippetNumber = wraps.length;
-snippetCount.innerHTML = snippetNumber;
+function snippetCounter(){
+    let snippetNumber = wraps.length;
+    snippetCount.innerHTML = snippetNumber;
+}
+
 
 //completed counter
 function cCounter(){
@@ -102,30 +168,34 @@ function cCounter(){
 
 
 
+
  //delete elements single
 function deleteItem(eleToDelete){
     let added = eleToDelete.nextSibling.innerHTML;
     
-    for(let i = 0; i < data.length; i++){
+    for(let i = 0; i < titleArray.length; i++){
       
-        if(data[i] === added){
-            data.splice(i , 1);
+        if(titleArray[i] === added){
+            titleArray.splice(i , 1);
             textArray.splice(i, 1);
             lineArray.splice(i, 1);
-            localStorage.setItem('title', JSON.stringify(data));
+            localStorage.setItem('title', JSON.stringify(titleArray));
             localStorage.setItem('mainText', JSON.stringify(textArray));
             localStorage.setItem('line', JSON.stringify(lineArray));
         }
-        document.location.reload();
+        // document.location.reload();
     }
     eleToDelete.parentElement.remove();
+    snippetCounter()
+    cCounter()
+    snippet.innerHTML = '';
 }
 
 
 
 //find snippet and display it
 function getTextFromArray(thisWrap){
-    for(let i = 0; i < data.length; i++){
+    for(let i = 0; i < titleArray.length; i++){
         if(thisWrap === wraps[i]){
         index = i;
             let lineWrap = thisWrap.firstChild.nextSibling.style.backgroundColor;
@@ -158,6 +228,7 @@ searchForm.addEventListener('submit', (e)=>{
     let searchInput = search.value;
     if(wraps.length === 0){
         snippet.innerHTML = 'You have no snippets!';
+        
     }else{
         for(let i = 0; i < wraps.length; i++){
             let wrapInput = wraps[i].firstChild.nextSibling.innerHTML;
@@ -183,6 +254,7 @@ searchForm.addEventListener('submit', (e)=>{
         }
         
     }
+    search.value = '';
 });
 
 
@@ -202,6 +274,7 @@ copyBtn.addEventListener('click', ()=>{
     }else{
         quickCopy();
     }
+
 })
     
 
@@ -268,7 +341,7 @@ function lineThrough(line){
 
 //remove all snippets and elements
 btn.addEventListener('click', function(){
-   let sure = confirm('Are you sure!? all will be deleted!');
+   let sure = confirm('Are you sure!? everything will be wiped!');
     if(sure){
         [].forEach.call(document.querySelectorAll('.addWrap'), function(e){
             e.parentNode.removeChild(e)
@@ -278,12 +351,12 @@ btn.addEventListener('click', function(){
     }else{
         null;
     }
- 
+    snippet.innerHTML = '';
 })
 
 
 
-// change background color
+// color palette
     let colorPalette = document.getElementById('palette');
     let colorChoice = document.getElementById('color-choice');
     let exit = document.getElementById('exit');
@@ -299,4 +372,7 @@ btn.addEventListener('click', function(){
         colorChoice.style.transform = 'scale(0)';
         colorChoice.style.opacity = '0';
     })
+    
+    
+   
     

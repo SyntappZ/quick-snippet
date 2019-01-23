@@ -23,10 +23,10 @@
             <p id="exit">&times;</p>
             <h3>Theme changer</h3>
             <div class="color-box-wrap">
-                <div id="red" class="color-box"></div>
-                <div id="blue" class="color-box"></div>
-                <div id="pink" class="color-box"></div>
-                <div id="green" class="color-box"></div>
+                <div id="red" onclick="redTheme()" class="color-box"></div>
+                <div id="blue" onclick="blueTheme()" class="color-box"></div>
+                <div id="purple" onclick="purpleTheme()" class="color-box"></div>
+                <div id="green" onclick="greenTheme()" class="color-box"></div>
             </div>
         </div>
     </header>
@@ -43,20 +43,20 @@
                     <textarea  placeholder="Snippet here..." autocomplete="off" class="imp" id="textarea" ></textarea>
                     <button class="button" id="add">Add</button>
                 </form>
-                <h2>you have <span id="snip-count"></span> snippets</h2>
+                <h2>you have <span id="snip-count">0</span> snippets</h2>
                 <h3>snippets completed - <span id="line-count">0</span></h3>
                    
                 
                
                 <div class="left-bottom-wrap">
-                    <button class="button" id="btn">remove all</button>
+                    <button class="button" id="btn">Wipe All</button>
                 
                     <div id="left-lnfo" class="info">
                         Welcome to quick snippet this site uses browser storage
                         so your saves will only be accessible on this browser/computer.
                     </div>
                     <div class="line"></div>
-                    <p class="auth">syntappz 2019</p>
+                    <p class="auth">Syntappz 2019 - v1.0</p>
                 </div>
         </aside>
         <!--------------- center container ------------------>

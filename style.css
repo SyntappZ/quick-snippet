@@ -1,9 +1,9 @@
 /*--------- colors ----------*/
 :root{
-  --button: #6BB983;
+  --header:#0C2925;
   --aside:#1B3E3C;
   --background:#55746F;
-  --header:#0C2925;
+  --button: #6BB983;
   --text-bg:#Fff;
 }
 
@@ -147,7 +147,7 @@
   #blue{
     background-color:#0A3B5C;
   }
-  #pink{
+  #purple{
     background-color:#361E40;
   }
   #green{
@@ -240,6 +240,7 @@
   .auth{
     margin:20px 0;
     color:#fff;
+    text-transform: none;
   }
   
   /*----------------- center container ----------------*/

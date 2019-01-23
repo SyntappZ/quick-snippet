@@ -4,7 +4,7 @@ let textArea = document.getElementById('textarea');
 let list = document.getElementById('list');
 let btn = document.getElementById('btn');
 let wraps = document.getElementsByClassName('addWrap');
-let snippet = document.getElementById('snippet');
+let snippet = document.getElementById('snippet-text');
 let snippetCount = document.getElementById('snip-count');
 
 
@@ -53,6 +53,8 @@ createItem(input.value);
 data.forEach(item =>{
     createItem(item);
 });
+
+// load completed snippets
 lineLoop()
 function lineLoop(){
    
@@ -77,14 +79,28 @@ function createItem(x){
     let addList = `<div onmouseover="getTextFromArray(this)" class="addWrap"><div onclick="deleteItem(this)" class="trash"><i class="fas fa-trash-alt"></i></div><div onclick="lineThrough(this)" id="addItem">${x}</div><div onclick="quickCopy()" class="copy"><i class="fas fa-copy"></i></div></div>`
     list.insertAdjacentHTML('beforeend', addList);
     input.focus();
-   
-    
 }
   
 //snippet counter
 let lineCount = document.getElementById('line-count');
 let snippetNumber = wraps.length;
 snippetCount.innerHTML = snippetNumber;
+
+//completed counter
+function cCounter(){
+    let c = 0;
+    let completedCount = document.getElementById('line-count');
+    for(let i = 0; i <  lineArray.length; i++){
+        if(lineArray[i] === 'b'){
+        c++
+        }
+    }
+    completedCount.innerHTML = c;
+}
+
+
+
+
 
  //delete elements single
 function deleteItem(eleToDelete){
@@ -106,6 +122,7 @@ function deleteItem(eleToDelete){
 }
 
 
+
 //find snippet and display it
 function getTextFromArray(thisWrap){
     for(let i = 0; i < data.length; i++){
@@ -113,24 +130,20 @@ function getTextFromArray(thisWrap){
         index = i;
             let lineWrap = thisWrap.firstChild.nextSibling.style.backgroundColor;
             if(lineWrap === 'rgb(189, 211, 222)'){
-                //make done text and display
+                snippet.style.textDecoration = 'line-through';
                 if(textArray[i].charAt(0) === '<'){ 
                     snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
                 }else{
                     snippet.innerHTML = textArray[i];
                 }
             }else{
+                snippet.style.textDecoration = 'none';
                 if(textArray[i].charAt(0) === '<'){ 
                     snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
                 }else{
                     snippet.innerHTML = textArray[i];
-                    
                 }
             }
-                
-        
-            
-          
         }
     }
 }
@@ -138,10 +151,10 @@ function getTextFromArray(thisWrap){
 //search function
 let search = document.getElementById('search');
 let searchBtn = document.getElementById('search-btn');
+let searchForm = document.getElementById('search-wrap');
 
-
-
-searchBtn.addEventListener('click', ()=>{
+searchForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
     let searchInput = search.value;
     if(wraps.length === 0){
         snippet.innerHTML = 'You have no snippets!';
@@ -149,13 +162,26 @@ searchBtn.addEventListener('click', ()=>{
         for(let i = 0; i < wraps.length; i++){
             let wrapInput = wraps[i].firstChild.nextSibling.innerHTML;
             if(searchInput === wrapInput){
-                if(textArray[i].charAt(0) === '<'){ 
-                    snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
-                }else{
-                    snippet.innerHTML = textArray[i];
-                }
+             let wrapColor = wraps[i].firstChild.nextSibling.style.backgroundColor;
+            if(wrapColor === 'rgb(189, 211, 222)'){
+                snippet.style.textDecoration = 'line-through';
+                    if(textArray[i].charAt(0) === '<'){ 
+                        snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
+                    }else{
+                        snippet.innerHTML = textArray[i];
+                    }
+            }else{
+                snippet.style.textDecoration = 'none';
+                    if(textArray[i].charAt(0) === '<'){ 
+                        snippet.innerHTML = '<xmp>'+ textArray[i] +'</xmp>';
+                    }else{
+                        snippet.innerHTML = textArray[i];
+                    }
             }
+                
         }
+        }
+        
     }
 });
 
@@ -167,9 +193,12 @@ copyBtn.addEventListener('click', ()=>{
     if(snippet.innerHTML === '' ||
        snippet.innerHTML === 'You have no snippets!' ||
        snippet.innerHTML === 'Title not recognised!' ||
+       snippet.style.textDecoration === 'line-through' ||
        snippet.innerHTML === 'no snippet to copy!'){
+
+       snippet.style.textDecoration = 'none';
        snippet.innerHTML = 'no snippet to copy!';
-       console.log(lineArray)
+       
     }else{
         quickCopy();
     }
@@ -215,12 +244,11 @@ function lineThrough(line){
         line.style.transform = 'scale(.97)';
         line.style.backgroundColor = '#BDD3DE';
     }
-    //need to make this store in storage somehow!
     lineCheck()
-    
 }
 
 
+//check if snippet is complete and send to array
     function lineCheck(){
         for(let x = 0; x < wraps.length; x++){
             let textDiv = wraps[x].firstChild.nextSibling;
@@ -232,11 +260,9 @@ function lineThrough(line){
                      
         }
         localStorage.setItem('line', JSON.stringify(lineArray));
-        
-        console.log(lineArray);
+        cCounter()
     }
     
-
 
 
 
@@ -257,15 +283,20 @@ btn.addEventListener('click', function(){
 
 
 
-
+// change background color
     let colorPalette = document.getElementById('palette');
     let colorChoice = document.getElementById('color-choice');
+    let exit = document.getElementById('exit');
 
+    //open
     colorPalette.addEventListener('mouseover', ()=>{
         colorChoice.style.transform = 'scale(1)';
         colorChoice.style.opacity = '1';
-      
     })
-   
-    // colorChoice.style.transform = 'scale(0)';
-    // colorChoice.style.opacity = '0';
+
+    //close
+    exit.addEventListener('click', ()=>{
+        colorChoice.style.transform = 'scale(0)';
+        colorChoice.style.opacity = '0';
+    })
+    

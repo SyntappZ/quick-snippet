@@ -58,7 +58,7 @@
     font-size:12px;
     padding-left:40px;
   }
-  header h3{
+  #header-h3{
     position: absolute;
     padding:10px;
     bottom:0;
@@ -97,7 +97,6 @@
     cursor: pointer;
   }
   .color-change{
-    display:none;
     width:250px;
     height:100px;
     position: absolute;
@@ -107,19 +106,34 @@
     top:0;
     right:0;
     margin:auto;
-    color:#000;
     z-index: 2;
     border:solid 1px #000;
     transform: scale(0);
     opacity: 0;
     transition: .2s ease-in-out;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+  }
+  #exit{
+    color:#000;
+    position: absolute;
+    top:0;
+    left:10px;
+    padding:5px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size:20px;
+  }
+  .color-change h3{
+    color:#000;
+    text-align: center;
   }
   .color-box-wrap{
-    width:100%;
-    height:90px;
+    height:auto;
     display:flex;
     justify-content: space-around;
-    margin-top:60px;
+    
   }
   .color-box{
     border:solid 1px #000;
@@ -321,14 +335,15 @@
 #search-wrap{
   width:100%;
   display:flex;
+  height:30px;
   justify-content: center;
   align-items: center;
   
 }
 #search-btn{
   background-color:var(--button);
-  padding:7px;
-  width:50px;
+  height:100%;
+  width:70px;
   color:#000;
   cursor: pointer;
   border:none;

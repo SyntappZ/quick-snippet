@@ -54,6 +54,10 @@
     position: relative;
     
   }
+  header p {
+    font-size:12px;
+    padding-left:40px;
+  }
   header h3{
     position: absolute;
     padding:10px;
@@ -79,6 +83,63 @@
     padding-left:5px;
   }
 
+  .palette-wrap{
+    position: absolute;
+    right:10px;
+    width:200px;
+    height:100%;
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+  }
+  .color-pal{
+    font-size:30px;
+    cursor: pointer;
+  }
+  .color-change{
+    display:none;
+    width:250px;
+    height:100px;
+    position: absolute;
+    padding:10px;
+    border-radius:10px;
+    background-color:rgb(255, 255, 255);
+    top:0;
+    right:0;
+    margin:auto;
+    color:#000;
+    z-index: 2;
+    border:solid 1px #000;
+    transform: scale(0);
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  .color-box-wrap{
+    width:100%;
+    height:90px;
+    display:flex;
+    justify-content: space-around;
+    margin-top:60px;
+  }
+  .color-box{
+    border:solid 1px #000;
+    width:40px;
+    height:40px;
+    cursor: pointer;
+  }
+  #red{
+    background-color:#40121A;
+  }
+  #blue{
+    background-color:#0A3B5C;
+  }
+  #pink{
+    background-color:#361E40;
+  }
+  #green{
+    background-color:#1B3E3C;
+  }
+
  
    /*------------------- left aside ------------------*/
   
@@ -86,6 +147,9 @@
     padding:15px 0;
   }
  
+  #left-aside h3{
+    padding-top:20px;
+  }
 
   #form{
     display:flex;
@@ -121,56 +185,8 @@
   #add{
     padding:5px;
   }
-  .color-pal{
-    margin:20px;
-    font-size:80px;
-    cursor: pointer;
-  }
-  .color-change{
-    width:90%;
-    height:200px;
-    position: absolute;
-    padding:10px;
-    border-radius:10px;
-    background-color:rgb(255, 255, 255);
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-    color:#000;
-    z-index: 2;
-    outline: #000;
-    transform: scale(0);
-    opacity: 0;
-    transition: .2s ease-in-out;
-  }
-  .color-box-wrap{
-    width:100%;
-    height:90px;
-    display:flex;
-    justify-content: space-around;
-    margin-top:60px;
-  }
-  .color-box{
-    border:solid 1px #000;
-    width:40px;
-    height:40px;
-    cursor: pointer;
-  }
-  #red{
-    background-color:#40121A;
-  }
-  #blue{
-    background-color:#0A3B5C;
-  }
-  #pink{
-    background-color:#361E40;
-  }
-  #green{
-    background-color:#1B3E3C;
-  }
-
+  
+  
   .left-bottom-wrap{
     width:100%;
     height: auto;

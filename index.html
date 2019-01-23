@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,6 +14,20 @@
     <header>
         <div class="header-line"></div>
         <h3>Quick Snippet<i class="far fa-copy title-i"></i></h3> 
+        <div class="palette-wrap">
+            <p>change colour</p>
+            <i id="palette" class="fas fa-palette color-pal"></i>
+        </div>
+       
+        <div id="color-choice" class="color-change">
+            <h3>colour changer</h3>
+            <div class="color-box-wrap">
+                <div id="red" class="color-box"></div>
+                <div id="blue" class="color-box"></div>
+                <div id="pink" class="color-box"></div>
+                <div id="green" class="color-box"></div>
+            </div>
+        </div>
     </header>
     <div class="page-wrap">
 
@@ -28,17 +43,10 @@
                     <button class="button" id="add">Add</button>
                 </form>
                 <h2>you have <span id="snip-count"></span> snippets</h2>
-                    <i id="palette" class="fas fa-palette color-pal"></i>
-                <p>change colour</p>
-                <div id="color-choice" class="color-change">
-                    <h3>colour changer</h3>
-                    <div class="color-box-wrap">
-                        <div id="red" class="color-box"></div>
-                        <div id="blue" class="color-box"></div>
-                        <div id="pink" class="color-box"></div>
-                        <div id="green" class="color-box"></div>
-                    </div>
-                </div>
+                <h3>snippets completed - <span id="line-count"></span></h3>
+                   
+                
+               
                 <div class="left-bottom-wrap">
                     <button class="button" id="btn">remove all</button>
                 
@@ -64,7 +72,10 @@
        <aside id="right-aside">
             
                 <p class="right-title">&darr; snippet &darr;</p>
-                <div id="snippet"></div>
+                <div id="snippet">
+                    <p id="snippet-text"></p>
+                    <!-- <h1 class="done">done!</h1> -->
+                </div>
                 <div class="right-bottom-wrap">
                     <div id="search-wrap">
                         <input class="imp" id="search" placeholder="Search..." autocomplete="off" type="text">

@@ -1,4 +1,8 @@
-# shopping-list-app
+# quick snippet
+
+I made this project to save my snippets of code, also as a administrator it will save time in work also the rest of the team can use it too, it uses local storage to store all snippets, snippet state (completed or not) and theme color.
+making this project has taught me a lot more about loops and how to use them better, also i know more about arrays now and how to use them to store the page state to local storage and also starting to get the hang of if statements. 
+
 
 ## screenshots
 

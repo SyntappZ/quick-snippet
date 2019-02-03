@@ -104,7 +104,6 @@ createItem(input.value);
 input.value = '';
 textArea.value = '';
 
-//  document.location.reload();
 });
 
 
@@ -183,7 +182,7 @@ function deleteItem(eleToDelete){
             localStorage.setItem('mainText', JSON.stringify(textArray));
             localStorage.setItem('line', JSON.stringify(lineArray));
         }
-        // document.location.reload();
+        
     }
     eleToDelete.parentElement.remove();
     snippetCounter()
@@ -334,6 +333,7 @@ function lineThrough(line){
         }
         localStorage.setItem('line', JSON.stringify(lineArray));
         cCounter()
+        
     }
     
 
@@ -362,13 +362,13 @@ btn.addEventListener('click', function(){
     let exit = document.getElementById('exit');
 
     //open
-    colorPalette.addEventListener('mouseover', ()=>{
+    colorPalette.addEventListener('mouseover', () => {
         colorChoice.style.transform = 'scale(1)';
         colorChoice.style.opacity = '1';
     })
 
     //close
-    exit.addEventListener('click', ()=>{
+    exit.addEventListener('click', () => {
         colorChoice.style.transform = 'scale(0)';
         colorChoice.style.opacity = '0';
     })
